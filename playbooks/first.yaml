@@ -1,0 +1,7 @@
+---
+- name: first play book
+  hosts: localhost
+
+  tasks:
+    - name: ping test
+      ping:

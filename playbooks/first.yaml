@@ -1,0 +1,9 @@
+---
+- name: first play book
+  hosts: localhost
+
+  tasks:
+    - name: ping test
+      # ping:
+      # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ping_module.html#ansible-collections-ansible-builtin-ping-module
+      ansible.builtin.ping:

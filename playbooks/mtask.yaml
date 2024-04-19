@@ -1,0 +1,11 @@
+---
+- name: multiple tasks
+  hosts: localhost
+
+  tasks:
+    - name: ping the hostname
+      ansible.builtin.ping:
+    
+    - name: print a message
+      ansible.builtin.debug:
+        msg: hellow world

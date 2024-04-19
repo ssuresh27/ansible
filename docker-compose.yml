@@ -1,0 +1,12 @@
+version: '3'
+services:
+  node1:
+    image: ubuntu
+    tty: true
+    ports:
+      - "122:22"
+  node2:
+    image: ubuntu
+    tty: true
+    ports:
+      - "222:22"

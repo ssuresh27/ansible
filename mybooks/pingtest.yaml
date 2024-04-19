@@ -11,9 +11,5 @@
   become: yes
   become_exe: "sudo su - "
   become_method: su
-  tasks:
-  - name: Install required rpms using yum
-    ansible.builtin.yum:
-      path: /etc/foo.conf
-      state: touch
-      mode: u=rw,g=r,o=r
+  roles:
+  - run-with-sudo

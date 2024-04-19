@@ -6,3 +6,12 @@ anisble-config dump #Shows current setting of vairable
 
 ex:-
 anisble-config dump|grep GATHERING
+
+
+ansible-config --version       
+In this case I had no configuration file (config file = None) so I generated an empty one (option --disabled means all entries are commented out) in the current directory with
+
+% ansible-config init --disabled > ansible.cfg
+
+
+host_key_checking = false

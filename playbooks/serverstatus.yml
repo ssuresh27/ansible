@@ -1,0 +1,7 @@
+--- 
+- name: server status
+  hosts: all
+
+  tasks:
+  - name: test connectivity
+    ping:

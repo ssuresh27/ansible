@@ -1,1 +1,0 @@
-Date: 202401Jan bastion host EIP :- 3.18.147.213 bastion host DNS :- ec2-3-18-147-213.us-east-2.compute.amazonaws.com

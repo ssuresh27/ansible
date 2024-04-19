@@ -1,0 +1,2 @@
+    ec2-3-133-92-197.us-east-2.compute.amazonaws.com
+    ec2-3-14-126-14.us-east-2.compute.amazonaws.com

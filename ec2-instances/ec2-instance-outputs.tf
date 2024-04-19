@@ -5,6 +5,18 @@ output "ec2_public_dns" {
   value       = [for dns in module.ec2_bastion_instance : dns.public_dns]
 }
 
+locals {
+  conns = join("\n", concat([for instance in module.ec2_bastion_instance : instance.public_dns]))
+}
+
+resource "null_resource" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo $local.conns >> output/private_ips.txt"
+  }
+}
+
 # output "ec2_bastion_id" {
 #   description = "The ID of the instance"
 #   value       = module.ec2_bastion_instance.id

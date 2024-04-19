@@ -9,4 +9,5 @@ module "ec2_bastion_instance" {
   key_name               = local.keypair_name
   vpc_security_group_ids = [module.public-bastion-ssh-sg.security_group_id]
   tags                   = local.common_tags
+
 }

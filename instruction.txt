@@ -1,0 +1,8 @@
+anisble-config list #Lists all the configurations
+
+anisble-config view #Shows the current/active config file
+
+anisble-config dump #Shows current setting of vairable
+
+ex:-
+anisble-config dump|grep GATHERING

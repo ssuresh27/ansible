@@ -1,0 +1,19 @@
+---
+- name: Test the SSH connectivity for the host using SSH key
+  hosts: dba_poc
+
+  tasks:
+  - name: Check ssh connection
+    ping:
+  
+- name: Perform OS tasks as root with sudo access
+  hosts: dba_poc
+  become: yes
+  become_exe: "sudo su - "
+  become_method: su
+  tasks:
+  - name: Install required rpms using yum
+    ansible.builtin.yum:
+      path: /etc/foo.conf
+      state: touch
+      mode: u=rw,g=r,o=r

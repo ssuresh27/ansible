@@ -15,3 +15,6 @@ In this case I had no configuration file (config file = None) so I generated an 
 
 
 host_key_checking = false
+
+#System build factor
+ansible localhost -m setup

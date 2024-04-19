@@ -12,4 +12,5 @@
   become_exe: "sudo su - "
   become_method: su
   roles:
-  - run-with-sudo
+  - role: run-with-sudo
+    pack_name: ksh

@@ -1,16 +1,17 @@
 ---
 - name: Test the SSH connectivity for the host using SSH key
-  hosts: dba_poc
+  # hosts: dba_poc
+  hosts: aws_ec2_instances
 
   tasks:
   - name: Check ssh connection
     ping:
   
 - name: Perform OS tasks as root with sudo access
-  hosts: dba_poc
+  hosts: aws_ec2_instances
   become: yes
   become_exe: "sudo su - "
   become_method: su
   roles:
   - role: run-with-sudo
-    pack_name: ksh
+    pack_name: bash

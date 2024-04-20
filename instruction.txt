@@ -18,3 +18,18 @@ host_key_checking = false
 
 #System build factor
 ansible localhost -m setup
+
+https://stackoverflow.com/questions/58789955/cannot-see-etc-ansible-hosts-in-macos
+
+By default in Mac you would not get file /etc/ansible/hosts
+
+Work around is to set ENV variable
+
+ANSIBLE_CONFIG=/Users/your-user-name/.ansible.cfg
+and create a file.
+
+ ~/.ansible.cfg
+[defaults]
+host_key_checking = False
+DEFAULT_HOST_LIST = /Users/your-user-name/.ansible/hosts
+inventory =  /Users/your-user-name/.ansible/hosts

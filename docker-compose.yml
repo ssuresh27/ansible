@@ -1,12 +1,8 @@
 version: '3'
 services:
   node1:
-    image: ubuntu
+    image: alpinelinux/ansible
     tty: true
-    ports:
-      - "122:22"
-  node2:
-    image: ubuntu
-    tty: true
-    ports:
-      - "222:22"
+    volumes:
+      - /Users/suresh/Documents/GitHub/ansible/mybooks:/app
+      - /Users/suresh/.ansible:/etc/ansible

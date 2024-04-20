@@ -1,0 +1,13 @@
+# ---
+# - name: Install Apache package
+#   vars:
+#     pack_name : bc
+#   shell: dnf install -y {{ pack_name }}
+- name : Execute shell script on remote host
+  vars:
+    pack_name: bc
+
+  ansible.builtin.dnf:
+    name: "{{ pack_name }}"
+    state: present
+    

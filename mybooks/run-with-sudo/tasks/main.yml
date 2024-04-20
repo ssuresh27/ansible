@@ -1,8 +1,0 @@
-- name : Execute shell script on remote host
-  vars: 
-    pack_name: bc
-
-  ansible.builtin.yum:
-    name: "{{ pack_name }}"
-    state: present
-    

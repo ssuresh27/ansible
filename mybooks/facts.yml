@@ -1,0 +1,11 @@
+---
+- name: Test the SSH connectivity for the host using SSH key
+  # hosts: dba_poc
+  hosts: aws_ec2_instances
+
+  tasks:
+  - name: Check ssh connection
+    ping:
+  - name: output facts
+    debug: 
+      var:  ansible_facts.all_ipv4_addresses

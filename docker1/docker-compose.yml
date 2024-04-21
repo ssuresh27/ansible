@@ -2,7 +2,16 @@
 version: '3'
 services:
   node1:
-    image: ansible:latest
+    image: ansible-new:latest
+    tty: true
+    volumes:
+      - /Users/suresh/Documents/GitHub/ansible/mybooks:/app
+      # - /Users/suresh/.ansible:/etc/ansible
+    ports:
+      - 1111:22
+  
+  node2:
+    image: ansible-new:latest
     tty: true
     volumes:
       - /Users/suresh/Documents/GitHub/ansible/mybooks:/app

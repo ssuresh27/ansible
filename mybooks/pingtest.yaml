@@ -15,3 +15,5 @@
   roles:
   - role: run-with-sudo
     pack_name: bash
+  - role: run-with-sudo
+    pack_name: mutt

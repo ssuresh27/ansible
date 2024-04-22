@@ -4,8 +4,8 @@ services:
   node1:
     image: ansible-new:latest
     tty: true
-    volumes:
-      - /Users/suresh/Documents/GitHub/ansible/mybooks:/app
+    # volumes:
+    #   - /Users/suresh/Documents/GitHub/ansible/mybooks:/app
       # - /Users/suresh/.ansible:/etc/ansible
     ports:
       - 1111:22
@@ -13,17 +13,26 @@ services:
   node2:
     image: ansible-new:latest
     tty: true
-    volumes:
-      - /Users/suresh/Documents/GitHub/ansible/mybooks:/app
+    # volumes:
+      # - /Users/suresh/Documents/GitHub/ansible/mybooks:/app
       # - /Users/suresh/.ansible:/etc/ansible
     ports:
       - 2222:22
 
-  node3:
-    image: ansible-new:latest
-    tty: true
-    volumes:
-      - /Users/suresh/Documents/GitHub/ansible/mybooks:/app
-      # - /Users/suresh/.ansible:/etc/ansible
-    ports:
-      - 3333:22
+  # node3:
+  #   image: ansible-new:latest
+  #   tty: true
+  #   # volumes:
+  #     # - /Users/suresh/Documents/GitHub/ansible/mybooks:/app
+  #     # - /Users/suresh/.ansible:/etc/ansible
+  #   ports:
+  #     - 3333:22
+
+  db01:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: welcome123
+  # db02:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_PASSWORD: welcome123

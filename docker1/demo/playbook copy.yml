@@ -1,0 +1,99 @@
+---
+- name: Deploy web application
+  hosts: all
+  tasks:
+    - name: Install OS packages
+      apt: 
+        name: "{{ item }}"
+        state: latest
+      with_items: 
+        - python3
+        - python3-setuptools
+        - python3-dev
+        - build-essential
+        - python3-pip
+        - python3-flask
+
+    - name: Install python flask package
+      ansible.builtin.pip:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - Flask
+        - psycopg2-binary
+
+    - name: Install PostgreSQL database
+      apt: 
+        name: "{{ item }}"
+        state: present
+      with_items: 
+      - postgresql
+    
+    - name: Start PostgreSQL database
+      service:
+        name: postgresql
+        state: started
+        enabled: yes
+    
+    - name: Create Application database
+      become: true
+      become_user: postgres
+      community.postgresql.postgresql_db:
+        name: flask_db
+        comment: My test DB
+
+    - name: Connect to acme database, create ssuresh user, and grant access to database and products table
+      become: true
+      become_user: postgres
+      community.postgresql.postgresql_user:
+        db: flask_db
+        name: ssuresh
+        password: welcome123
+        priv: "ALL"
+        state: present
+
+    - name: Install python flask package
+      ansible.builtin.pip:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - Flask
+        - psycopg2-binary
+
+    - name: copy init python script
+      ansible.builtin.copy: 
+        src: init_db.py
+        dest: /root/flask_app/
+    
+    - name: execute initiate DB
+      # become: true
+      # become_user: postgres
+      ansible.builtin.shell: |
+        cd /root/flask_app/
+        python3 init_db.py
+    
+    - name: copy App python script
+      ansible.builtin.copy: 
+        src: app.py
+        dest: /root/flask_app/
+    
+    - name: Copy HTML Files
+      ansible.builtin.copy: 
+        src: base.html
+        dest: /root/flask_app/templates/
+    - name: Copy HTML Files
+      ansible.builtin.copy: 
+        src: index.html
+        dest: /root/flask_app/templates/
+    
+    - name: copy App python script
+      ansible.builtin.copy: 
+        src: app.py
+        dest: /root/flask_app/app.py
+    
+    - name: Start the App
+      ansible.builtin.shell: |
+            cd /root/flask_app/
+            export FLASK_APP=app
+            export FLASK_ENV=development
+            nohup flask run --host=0.0.0.0 &

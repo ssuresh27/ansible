@@ -3,9 +3,20 @@
 FROM debian:latest
 WORKDIR '/app'
 RUN apt-get update && apt-get install -y openssh-server
+RUN apt-get install python3 -y && apt-get install python3-pip -y  && apt-get install curl -y 
+RUN apt-get install vim -y  && apt-get install sshpass -y
+RUN python3 -m pip config set global.break-system-packages true
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN python3 get-pip.py --user
+RUN python3 -m pip install --user ansible
+
 RUN mkdir /var/run/sshd
 RUN echo 'root:root123' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+COPY demo/ /app/
+
+ENV PATH /root/.local/bin:$PATH
+ENV ANSIBLE_CONFIG=/app/ansible.cfg
 
 EXPOSE 22
 

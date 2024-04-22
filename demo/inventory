@@ -1,0 +1,2 @@
+node01 ansible_host=192.168.67.8 ansible_user=root ansible_password=root123
+node02 ansible_host=192.168.67.9 ansible_user=root ansible_password=root123

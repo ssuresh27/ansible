@@ -1,0 +1,30 @@
+2024-04-23 20:45:35,608 p=1259 u=root n=ansible | node2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2024-04-23 20:45:35,609 p=1259 u=root n=ansible | node1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2024-04-23 21:00:38,009 p=1306 u=root n=ansible | node1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2024-04-23 21:00:38,011 p=1306 u=root n=ansible | node2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2024-04-23 21:19:56,144 p=1353 u=root n=ansible | [WARNING]: msg was not found
+

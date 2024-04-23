@@ -52,7 +52,11 @@
       ansible.builtin.copy: 
         src: index.html
         dest: /root/flask_app/templates/
-    
+    - name: Copy HTML Files
+      ansible.builtin.copy: 
+        src: create.html
+        dest: /root/flask_app/templates/
+       
     - name: copy App python script
       ansible.builtin.copy: 
         src: app.py

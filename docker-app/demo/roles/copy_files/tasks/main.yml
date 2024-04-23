@@ -1,0 +1,19 @@
+---
+# tasks file for copy_files
+#Copy required files to nodes
+    - name: Copy py files to remote
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: /root/flask_app/
+      with_items: 
+        - init_db.py
+        - app.py
+# tasks file for flask_web
+    - name: Copy html files to remote
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: /root/flask_app/templates/
+      with_items: 
+        - index.html
+        - create.html
+        - base.html

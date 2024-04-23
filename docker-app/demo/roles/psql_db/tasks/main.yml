@@ -1,0 +1,12 @@
+---
+    - name: Install python psycopg2 for postgres
+      ansible.builtin.pip:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - psycopg2-binary
+# tasks file for psql_db
+    - name: execute initiate/delete old rows in DB
+      ansible.builtin.shell: |
+        cd /root/flask_app/
+        python3 init_db.py

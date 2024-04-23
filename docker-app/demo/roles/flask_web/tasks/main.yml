@@ -1,0 +1,14 @@
+---
+    - name: Install flask package
+      ansible.builtin.pip:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - Flask
+
+    - name: Start the App
+      ansible.builtin.shell: |
+        cd /root/flask_app/
+        export FLASK_APP=app
+        export FLASK_ENV=development
+        nohup flask run --host=0.0.0.0 &

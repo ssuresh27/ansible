@@ -1,0 +1,32 @@
+#https://stackoverflow.com/questions/46032392/docker-compose-does-not-allow-to-use-local-images
+version: '3'
+services:
+  contoller:
+    build:
+      context: .
+      dockerfile: Dockerfile.controller
+    tty: true
+    volumes:
+      - ./demo:/app
+    ports:
+      - 1101:22
+  
+  node1:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    tty: true
+    ports:
+      - 1111:22
+      - 5001:5000
+
+  pgdb01:
+      image: postgres:14-alpine
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+      volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+      - ./data:/var/lib/postgresql/data
+      ports:
+        - 5432:5432

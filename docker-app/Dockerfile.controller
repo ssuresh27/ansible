@@ -9,7 +9,7 @@ RUN python3 -m pip config set global.break-system-packages true
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python3 get-pip.py --user
 RUN python3 -m pip install --user ansible
-COPY ./demo .
+# COPY ./demo .
 RUN mkdir /var/run/sshd
 RUN echo 'root:root123' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config

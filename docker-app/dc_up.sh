@@ -1,7 +1,7 @@
 #!/bin/sh
 #use the below to rebuild the image
-# docker build -t controller:latest -f Dockerfile.controller .
-# docker build -t nodes:latest -f Dockerfile.nodes .
+# docker build -t yessures/controller:latest -f Dockerfile.controller .
+# docker build -t yessures/nodes:latest -f Dockerfile.nodes .
 docker-compose build 
 docker-compose up -d
 sleep 5

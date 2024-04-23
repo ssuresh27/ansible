@@ -1,0 +1,5 @@
+#Delete the recors from DB
+- name: execute initiate/delete old rows in DB
+  ansible.builtin.shell: |
+    cd /root/flask_app/
+    python3 init_db.py

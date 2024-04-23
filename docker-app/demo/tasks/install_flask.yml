@@ -1,0 +1,7 @@
+    - name: Install python flask package
+      ansible.builtin.pip:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - Flask
+        - psycopg2-binary

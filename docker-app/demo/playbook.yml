@@ -27,40 +27,27 @@
         - Flask
         - psycopg2-binary
 
-    - name: copy init python script
-      ansible.builtin.copy: 
-        src: init_db.py
+    - name: Copy py files to remote
+      ansible.builtin.copy:
+        src: "{{ item }}"
         dest: /root/flask_app/
-    
-    - name: execute initiate DB
-      # become: true
-      # become_user: postgres
+      with_items: 
+        - init_db.py
+        - app.py
+
+    - name: Copy html files to remote
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: /root/flask_app/templates/
+      with_items: 
+        - index.html
+        - create.html
+        - base.html
+
+    - name: execute initiate/delete old rows in DB
       ansible.builtin.shell: |
         cd /root/flask_app/
         python3 init_db.py
-    
-    - name: copy App python script
-      ansible.builtin.copy: 
-        src: app.py
-        dest: /root/flask_app/
-    
-    - name: Copy HTML Files
-      ansible.builtin.copy: 
-        src: base.html
-        dest: /root/flask_app/templates/
-    - name: Copy HTML Files
-      ansible.builtin.copy: 
-        src: index.html
-        dest: /root/flask_app/templates/
-    - name: Copy HTML Files
-      ansible.builtin.copy: 
-        src: create.html
-        dest: /root/flask_app/templates/
-       
-    - name: copy App python script
-      ansible.builtin.copy: 
-        src: app.py
-        dest: /root/flask_app/app.py
     
     - name: Start the App
       ansible.builtin.shell: |

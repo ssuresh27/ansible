@@ -1,9 +1,10 @@
 #https://stackoverflow.com/questions/46032392/docker-compose-does-not-allow-to-use-local-images
-#Updated to use image instad of building on each time
 version: '3'
 services:
   contoller:
-    image: controller:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.controller
     tty: true
     volumes:
       - ./demo:/app
@@ -11,18 +12,13 @@ services:
       - 1101:22
   
   node1:
-    image: nodes:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.node
     tty: true
     ports:
       - 1111:22
       - 5001:5000
-
-  node2:
-    image: nodes:latest
-    tty: true
-    ports:
-      - 2222:22
-      - 5002:5000
 
   pgdb01:
       image: postgres:14-alpine

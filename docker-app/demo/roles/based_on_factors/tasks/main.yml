@@ -1,0 +1,19 @@
+---
+# tasks file for based_on_factors
+- name: display pre installation of setting up Oracle Database Software requirements into the Linux OS
+  debug:
+    msg:
+      - 'This playbook is for setting setting up Oracle Database Software requirement {{ansible_date_time.iso8601}}:'
+
+# - include_vars: rhel8_environment_vars.yml
+#   when: ansible_distribution_major_version == "8"
+
+# - include_vars: rhel9_environment_vars.yml
+#   when: ansible_distribution_major_version == "9"
+
+- name: Preparation tasks for hosting Oracle database
+  block:
+    - import_tasks: oracle_kernelparams.yml
+    
+    # - import_tasks: facts_to_file.yml
+    - import_tasks: oracle_packages.yml

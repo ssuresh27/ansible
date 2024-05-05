@@ -1,0 +1,16 @@
+---
+# ------------------------------------------------------------------------------
+# Setup necessary kernel parameters and reload using sysctl -p
+# ------------------------------------------------------------------------------
+- name: setup necessary kernel parameters 
+  # become: true
+  ansible.builtin.debug:
+    msg: "{{ item.name }} -> {{ item.value }}"
+
+  # ansible.posix.sysctl:
+  #   name: "{{ item.name }}"
+  #   value: "{{ item.value }}"
+  #   state: present
+  #   reload: true
+
+  with_items: "{{ kernel_params }}"

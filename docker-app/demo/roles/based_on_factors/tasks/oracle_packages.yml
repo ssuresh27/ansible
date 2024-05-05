@@ -1,0 +1,30 @@
+---
+# --------------------
+# Print Package list based on OS Major version (distribution_major_version)
+# --------
+
+- name: setup necessary Packages
+  include_vars: "{{ ansible_os_family }}{{ ansible_distribution_major_version }}.yml"
+  # include_vars: /app/debian.yml
+  # when: ansible_distribution_major_version == "13"
+
+- name: Print package list
+  ansible.builtin.debug:
+    msg: "Package -> {{ item }} }}"
+  with_items: "{{ package_list }}"
+
+# - name: Install necessary Packages
+
+#   ansible.posix.sysctl:
+#     name: "{{ item.name }}"
+#     value: "{{ item.value }}"
+#     state: present
+#     reload: true
+
+#   with_items: "{{ package_list }}"
+
+  # include_vars: debian.yml
+
+  # ansible.builtin.debug:
+  #   msg: "Package -> {{ item.name }} }}"
+  # with_items: "{{ package_list }}"

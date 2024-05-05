@@ -1,0 +1,7 @@
+---
+# vars file for based_on_factors
+kernel_params:
+# Shared memory and semaphore /etc/sysctl.d/98-oracle.conf or /etc/sysctl.conf
+- { name: fs.file-max, value: 6815744 }
+- { name: kernel.sem, value: 250 32000 100 128 }
+- { name: kernel.shmmni, value: 4096 }

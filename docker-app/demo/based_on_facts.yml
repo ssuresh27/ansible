@@ -1,0 +1,11 @@
+---
+- name: Deploy web application
+  serial: 1
+  hosts: all
+  roles:
+    - based_on_factors
+
+  # tasks:
+  #   - name: print the facts
+  #     ansible.builtin.debug: 
+  #       var: ansible_facts

@@ -1,4 +1,3 @@
-
 pipeline {
     agent { 
         node {
@@ -8,9 +7,11 @@ pipeline {
     triggers {
         pollSCM '* * * * *'
     }
+    stages {
         stage(" execute Ansible") {
            steps {
                 ansiblePlaybook colorized: true, credentialsId: 'jenkins-agent', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'playbooks/inventory', playbook: 'playbooks/tranfer_file.yaml', vaultTmpPath: ''
             }    
         }    
     }
+}

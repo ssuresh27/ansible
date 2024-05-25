@@ -1,15 +1,18 @@
 --- 
-- name: Transfer local file to remote server using ssh
+- name: Transfer the local files to remote server using ssh
   hosts: all
 
   tasks:
   - name: Copy file demo.txt to remote
     ansible.builtin.copy:
-      src: /tmp/cow.txt
-      dest: /tmp/cow.txt
+      src: "{{ item }}"
+      dest: "{{ item }}"
+      remote_src: no
+    with_items:
+      - /tmp/cow.txt
+      - /tmp/king.txt
+      - /tmp/oracle.txt
       # owner: adm_ssundararajan02
       # group: Unix-oracle-dba
       # mode: '0644'
       backup: yes
-
-    

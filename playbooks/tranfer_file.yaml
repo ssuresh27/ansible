@@ -5,8 +5,8 @@
   tasks:
   - name: Copy file demo.txt to remote
     ansible.builtin.copy:
-      src: /tmp/today.txt
-      dest: /tmp/today.txt
+      src: /tmp/cow.txt
+      dest: /tmp/cow.txt
       # owner: adm_ssundararajan02
       # group: Unix-oracle-dba
       # mode: '0644'

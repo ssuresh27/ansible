@@ -8,11 +8,9 @@
       src: "{{ item }}"
       dest: "{{ item }}"
       remote_src: no
+      backup: yes
     with_items:
       - /tmp/cow.txt
       - /tmp/king.txt
       - /tmp/oracle.txt
-      # owner: adm_ssundararajan02
-      # group: Unix-oracle-dba
-      # mode: '0644'
-      backup: yes
+      
